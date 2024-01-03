@@ -1,3 +1,5 @@
+using HackerNews.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddMemoryCache();
+builder.Services.AddLogging();
+builder.Services.AddScoped<CacheService>();
+builder.Services.AddScoped<HttpService>();
+builder.Services.AddScoped<LoggerService>();
+builder.Services.AddScoped<BestStoriesService>();
 
 var app = builder.Build();
 
